@@ -13,9 +13,14 @@ module.exports = {
           '0%': { 'background-position': '100%' },
           '100%': { 'background-position': '-100%' },
         },
+        shimmer: {
+          '0%': { 'background-position': '-200% 0' },
+          '100%': { 'background-position': '200% 0' },
+        },
       },
       animation: {
         shine: 'shine 5s linear infinite',
+        shimmer: 'shimmer 2s linear infinite',
       },
       fontFamily: {
         sans: ['var(--font-poppins)', 'sans-serif'],
