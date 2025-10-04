@@ -22,6 +22,9 @@ module.exports = {
         shine: 'shine 5s linear infinite',
         shimmer: 'shimmer 2s linear infinite',
       },
+      backgroundImage: {
+        'shiny-gradient': 'linear-gradient(120deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%)',
+      },
       fontFamily: {
         sans: ['var(--font-poppins)', 'sans-serif'],
       },
