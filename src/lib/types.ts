@@ -1,6 +1,9 @@
 /**
  * Types for NASA API responses
+ * 
+ * For API request parameter types, see nasa-api-types.ts
  */
+import { NasaAPIParams } from './nasa-api-types';
 
 // Main response structure
 export interface ApiResponse {
@@ -14,7 +17,13 @@ export interface ResponseHeader {
   status: number;
   QTime: number;
   params: {
-    target: string;
+    target?: string;
+    image_content?: string;
+    start?: string;
+    rows?: string;
+    sort?: string;
+    fq?: string;
+    [key: string]: string | undefined;
   };
 }
 

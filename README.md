@@ -1,24 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# NASA Hackathon Frontend
+
+This is a [Next.js](https://nextjs.org) project for the NASA Hackathon, featuring image gallery and visualization tools using the NASA PDS-Imaging Atlas API.
 
 ## Getting Started
 
 First, run the development server:
 
 ```bash
+# Install dependencies
+npm install
+# or
+pnpm install
+
+# Start development server
 npm run dev
 # or
-yarn dev
-# or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Image gallery with advanced visualization
+- NASA PDS-Imaging API integration
+- Interactive image viewer with zoom, pan, and fullscreen capabilities
+- JSON metadata viewer
+
+## API Usage Examples
+
+### Basic Image Search
+
+```javascript
+// Search for images of Mars craters
+const response = await fetch('/api/nasa?image_content=mars+crater&rows=20');
+const data = await response.json();
+```
+
+### Advanced Search with Filters
+
+```javascript
+// Search for Jupiter images from the Voyager mission between specific dates
+const params = new URLSearchParams({
+  target: 'jupiter',
+  mission_name: 'voyager',
+  start_date: '1979-01-01T00:00:00Z',
+  stop_date: '1979-12-31T23:59:59Z',
+  rows: '30',
+  sort: 'time_min asc'
+});
+
+const response = await fetch(`/api/nasa?${params}`);
+const data = await response.json();
+```
+
+### Spatial Search
+
+```javascript
+// Find images within 100km of a specific location on Mars
+const params = new URLSearchParams({
+  target: 'mars',
+  pt: '10.5,120.3', // Lat, Long
+  d: '100', // 100km radius
+  rows: '20'
+});
+
+const response = await fetch(`/api/nasa?${params}`);
+const data = await response.json();
+```
+
+## Image Viewer Components
+
+The app includes advanced image viewing capabilities using:
+
+1. **yet-another-react-lightbox** - For enhanced image viewing with features:
+   - Captions
+   - Fullscreen mode
+   - Slideshow
+   - Thumbnails
+   - Zoom controls
+
+2. **Image metadata** - Display and exploration of comprehensive image metadata
+
+## Documentation
+
+For detailed API documentation, see:
+- [NASA API Route Documentation](/src/app/api/nasa/README.md)
+- [PDS-Imaging Atlas API Documentation](https://pds-imaging.jpl.nasa.gov/tools/atlas/api/)
 
 ## Learn More
 
@@ -26,8 +94,6 @@ To learn more about Next.js, take a look at the following resources:
 
 - [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 

@@ -21,18 +21,28 @@ import Zoom from "yet-another-react-lightbox/plugins/zoom";
 import "yet-another-react-lightbox/plugins/captions.css";
 import "yet-another-react-lightbox/plugins/thumbnails.css";
 
+import { NasaAPIParams } from "@/lib/nasa-api-types";
+
 interface GalleryProps {
   query?: string;
   initialData?: ApiResponse;
   itemsPerPage?: number;
+  apiParams?: NasaAPIParams;
+  currentPage?: number;
 }
 
-export default function ImageGallery({ query = "mars", initialData, itemsPerPage = 12 }: GalleryProps) {
+export default function ImageGallery({ 
+  query = "venus", 
+  initialData, 
+  itemsPerPage = 12,
+  apiParams,
+  currentPage = 1
+}: GalleryProps) {
   const [data, setData] = useState<ApiResponse | null>(initialData || null);
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState<boolean>(!initialData);
   const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(currentPage);
   const [totalPages, setTotalPages] = useState<number>(1);
   
   // Modal states usando nosso hook personalizado
@@ -48,16 +58,29 @@ export default function ImageGallery({ query = "mars", initialData, itemsPerPage
   // Fetch data if not provided
   useEffect(() => {
     if (!initialData) {
-      fetchData(1);
+      fetchData(currentPage);
     } else {
       // Process initial data
       const galleryImages = initialData.response.docs.map(toGalleryImage);
       setImages(galleryImages);
       calculateTotalPages(initialData.response.numFound);
     }
-    // Reset to first page when query changes
-    setPage(1);
-  }, [initialData, query]);
+    // Update page when currentPage prop changes
+    setPage(currentPage);
+    
+    // Add listener for popstate events (browser back/forward buttons)
+    const handlePopState = () => {
+      // With server components and server actions handling URL changes,
+      // we don't need complex popstate handling, but we need this for manual browser navigation
+      // This will cause a full page refresh handled by the server component
+    };
+    
+    window.addEventListener('popstate', handlePopState);
+    
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, [initialData, query, apiParams, currentPage]);
 
   // Calculate total pages
   const calculateTotalPages = (totalItems: number) => {
@@ -73,9 +96,31 @@ export default function ImageGallery({ query = "mars", initialData, itemsPerPage
       // Calculate start index for pagination
       const start = (pageNum - 1) * itemsPerPage;
       
-      // Make request to our proxy API instead of directly to NASA API
+      // Use apiParams if provided, otherwise build basic query
+      let params: Record<string, string | number> = {};
+      
+      if (apiParams) {
+        // Use provided API parameters, filtering out undefined values
+        Object.entries(apiParams).forEach(([key, value]) => {
+          if (value !== undefined) {
+            params[key] = value;
+          }
+        });
+        // Update page-specific parameters
+        params.start = (pageNum - 1) * itemsPerPage;
+      } else {
+        // Build basic parameters
+        params = {
+          image_content: query,
+          start: start,
+          rows: itemsPerPage
+        };
+      }
+      
+      // Make request to our proxy API
       const response = await axios.get<ApiResponse>(
-        `/api/nasa?image_content=${encodeURIComponent(query)}&start=${start}&rows=${itemsPerPage}`
+        `/api/nasa`,
+        { params }  
       );
       
       setData(response.data);
@@ -100,10 +145,27 @@ export default function ImageGallery({ query = "mars", initialData, itemsPerPage
   
   // Handle page change
   const handlePageChange = (newPage: number) => {
+    // Update current page state
     setPage(newPage);
-    fetchData(newPage);
-    // Scroll to top when page changes
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    // If we're using URL-based navigation with apiParams, update URL
+    if (apiParams) {
+      // Get current URL and search params
+      const url = new URL(window.location.href);
+      const searchParams = url.searchParams;
+      
+      // Update page parameter
+      searchParams.set('page', newPage.toString());
+      
+      // With Next.js server components, we use full page navigation for consistency
+      window.location.href = `${url.pathname}?${searchParams.toString()}`;
+    } else {
+      // Use traditional method for non-URL based navigation
+      fetchData(newPage);
+      
+      // Scroll to top when page changes
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Open image modal
@@ -164,7 +226,7 @@ export default function ImageGallery({ query = "mars", initialData, itemsPerPage
             >
               <Image 
                 src={image.thumbnailUrl} 
-                alt={image.title}
+                alt={image.title || "Imagem da nasa"}
                 fill
                 className="object-cover"
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
