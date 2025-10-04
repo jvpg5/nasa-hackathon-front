@@ -6,13 +6,28 @@ import Image from "next/image";
 import axios from "axios";
 import { CustomModal, ModalFooter, useModal } from "@/components/ui/custom-modal";
 
+// Lightbox imports
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
+// Plugins imports
+import Captions from "yet-another-react-lightbox/plugins/captions";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+
+// Plugin styles
+import "yet-another-react-lightbox/plugins/captions.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
+
 interface GalleryProps {
   query?: string;
   initialData?: ApiResponse;
   itemsPerPage?: number;
 }
 
-export default function ImageGallery({ query = "crater", initialData, itemsPerPage = 12 }: GalleryProps) {
+export default function ImageGallery({ query = "mars", initialData, itemsPerPage = 12 }: GalleryProps) {
   const [data, setData] = useState<ApiResponse | null>(initialData || null);
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState<boolean>(!initialData);
@@ -25,6 +40,10 @@ export default function ImageGallery({ query = "crater", initialData, itemsPerPa
   const jsonModal = useModal();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedImageData, setSelectedImageData] = useState<ImageDocument | null>(null);
+  
+  // Lightbox states
+  const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number>(0);
 
   // Fetch data if not provided
   useEffect(() => {
@@ -90,7 +109,9 @@ export default function ImageGallery({ query = "crater", initialData, itemsPerPa
   // Open image modal
   const openImageModal = (image: GalleryImage) => {
     setSelectedImage(image);
-    imageModal.onOpen();
+    const imageIndex = images.findIndex(img => img.id === image.id);
+    setLightboxIndex(imageIndex !== -1 ? imageIndex : 0);
+    setLightboxOpen(true);
   };
 
   // Open JSON data modal
@@ -137,7 +158,10 @@ export default function ImageGallery({ query = "crater", initialData, itemsPerPa
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {images.map((image) => (
           <div key={image.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-            <div className="relative h-48 bg-gray-900">
+            <div 
+              className="relative h-48 bg-gray-900 cursor-pointer" 
+              onClick={() => openImageModal(image)}
+            >
               <Image 
                 src={image.thumbnailUrl} 
                 alt={image.title}
@@ -277,12 +301,24 @@ export default function ImageGallery({ query = "crater", initialData, itemsPerPa
             Close
           </button>
           {selectedImage && (
-            <button
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-              onClick={() => openJsonFromImageModal(selectedImage)}
-            >
-              View JSON Data
-            </button>
+            <>
+              <button
+                className="px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md transition-colors mr-2"
+                onClick={() => {
+                  const imageIndex = images.findIndex(img => img.id === selectedImage.id);
+                  setLightboxIndex(imageIndex !== -1 ? imageIndex : 0);
+                  setLightboxOpen(true);
+                }}
+              >
+                Enhanced View
+              </button>
+              <button
+                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
+                onClick={() => openJsonFromImageModal(selectedImage)}
+              >
+                View JSON Data
+              </button>
+            </>
           )}
         </ModalFooter>
       </CustomModal>
@@ -324,6 +360,24 @@ export default function ImageGallery({ query = "crater", initialData, itemsPerPa
           )}
         </ModalFooter>
       </CustomModal>
+      
+      {/* Yet Another React Lightbox */}
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        index={lightboxIndex}
+        slides={images.map(image => ({
+          src: image.browseUrl,
+          alt: image.title,
+          title: image.title,
+          description: `Target: ${image.target} | Instrument: ${image.instrument} | Created: ${new Date(image.creationTime).toLocaleDateString()}`
+        }))}
+        plugins={[Captions, Fullscreen, Slideshow, Thumbnails, Zoom]}
+        captions={{ descriptionTextAlign: "center" }}
+        carousel={{ finite: images.length <= 1 }}
+        thumbnails={{ width: 120, height: 80 }}
+        zoom={{ maxZoomPixelRatio: 5 }}
+      />
     </div>
   );
 }
