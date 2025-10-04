@@ -3,6 +3,7 @@
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import Particles from "@/components/Particles";
+import SpotlightCard from "@/components/SpotlightCard";
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById("gallery-section");
