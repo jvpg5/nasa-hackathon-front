@@ -31,7 +31,7 @@ export default function Home() {
       {/* Header */}
       <Header />
 
-      <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full mt-40">
+      <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full ">
         <h1 className="text-white text-3xl md:text-4xl font-bold mb-4 text-center">
           Teste
         </h1>
