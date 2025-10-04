@@ -2,34 +2,35 @@
 
 import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
+import Particles from "@/components/Particles";
 
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#0A0814] flex flex-col items-center justify-start">
-      {/* Star background effect */}
+      {/* Particles background effect */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       >
-        {/* Simple starfield using random dots */}
-        <svg width="100%" height="100%" className="absolute inset-0 w-full h-full">
-          {Array.from({ length: 120 }).map((_, i) => (
-            <circle
-              key={i}
-              cx={Math.random() * 1920}
-              cy={Math.random() * 1080}
-              r={Math.random() * 1.2 + 0.3}
-              fill="white"
-              opacity={Math.random() * 0.7 + 0.3}
-            />
-          ))}
-        </svg>
+        <Particles
+          particleCount={200}
+          particleSpread={15}
+          speed={0.05}
+          particleColors={['#ffffff', '#e0e0e0', '#c0c0c0']}
+          moveParticlesOnHover={true}
+          particleHoverFactor={2}
+          alphaParticles={true}
+          particleBaseSize={80}
+          sizeRandomness={0.8}
+          cameraDistance={25}
+          disableRotation={false}
+          className="w-full h-full"
+        />
       </div>
 
       {/* Header */}
       <Header />
 
-      {/* Main content */}
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full mt-40">
         <h1 className="text-white text-3xl md:text-4xl font-bold mb-4 text-center">
           Teste
