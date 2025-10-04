@@ -18,10 +18,10 @@ export default function Home() {
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       >
         <Particles
-          particleCount={800}
+          particleCount={1000}
           particleSpread={15}
           speed={0.05}
-          particleColors={["#ffffff", "#ffffff", "#c0c0c0"]}
+          particleColors={["#ffffff", "#ffffff", "#ffffff"]}
           moveParticlesOnHover={true}
           particleHoverFactor={2}
           alphaParticles={true}
@@ -86,7 +86,7 @@ export default function Home() {
               categorias
             </p>
           </div>
-          Z{/* Gallery Preview */}
+          {/* Gallery Preview */}
           <div className="text-center">
             <p className="text-gray-400 text-lg mb-8">
               Clique em uma categoria acima para explorar as imagens
@@ -97,10 +97,30 @@ export default function Home() {
                   key={item}
                   className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105"
                 >
-                  <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center">
-                    <span className="text-gray-400 text-sm">
-                      Preview {item}
-                    </span>
+                  <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                    {item === 1 ? (
+                      <img
+                        src="/nasa5.png"
+                        alt="Imagem Espacial 1"
+                        className="object-cover w-full h-full rounded-lg"
+                      />
+                    ) : item === 2 ? (
+                      <img
+                        src="/nasa7.png"
+                        alt="Imagem Espacial 2"
+                        className="object-cover w-full h-full rounded-lg"
+                      />
+                    ) : item === 3 ? (
+                      <img
+                        src="/nasa8.jpg"
+                        alt="Imagem Espacial 3"
+                        className="object-cover w-full h-full rounded-lg"
+                      />
+                    ) : (
+                      <span className="text-gray-400 text-sm">
+                        Imagem Espacial {item}
+                      </span>
+                    )}
                   </div>
                   <h4 className="text-white font-semibold text-sm mb-1">
                     Imagem Espacial {item}
