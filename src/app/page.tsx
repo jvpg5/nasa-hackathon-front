@@ -115,7 +115,7 @@ export default function Home() {
             <p className="text-gray-400 text-lg mb-8">
               Clique em uma categoria abaixo para explorar as imagens
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-80">
               {galleryItems.map((item) => (
                 <div
                   key={item.id}
