@@ -10,7 +10,7 @@ export default function Header() {
             </div>
             <nav className="flex items-center gap-6">
                 <a href="#" className="text-white font-normal text-xs hover:underline transition">Home</a>
-                <a href="#" className="text-white font-normal text-xs hover:underline transition">About us</a>
+                <a href="#" className="text-white font-normal text-xs hover:underline transition">Saiba Mais</a>
             </nav>
         </div>
     );

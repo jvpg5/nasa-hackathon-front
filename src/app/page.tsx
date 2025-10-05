@@ -13,6 +13,11 @@ const scrollToGallery = () => {
   gallerySection?.scrollIntoView({ behavior: "smooth" });
 };
 
+const scrollToFooter = () => {
+  const footerSection = document.getElementById("footer-section");
+  footerSection?.scrollIntoView({ behavior: "smooth" });
+};
+
 export default function Home() {
   const galleryItems = [
     {
@@ -81,6 +86,7 @@ export default function Home() {
             Galeria
           </Button>
           <Button
+            onClick={scrollToFooter}
             id="about-us-section"
             className="bg-transparent border border-white text-white font-semibold px-8 py-2 rounded-full shadow transition hover:bg-white hover:text-black"
             variant="outline"

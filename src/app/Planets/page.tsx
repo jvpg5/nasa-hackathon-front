@@ -1,11 +1,11 @@
-import Link from 'next/link';
-import { planetData } from '@/lib/planet-data';
-import TextStyled from '@/components/ui/textstyled';
-import SpotlightCard from '@/components/SpotlightCard';
+import Link from "next/link";
+import { planetData } from "@/lib/planet-data";
+import TextStyled from "@/components/ui/textstyled";
+import SpotlightCard from "@/components/SpotlightCard";
 
 export const metadata = {
-  title: 'Planets | NASA Explorer',
-  description: 'Explore the planets of our Solar System',
+  title: "Planets | NASA Explorer",
+  description: "Explore the planets of our Solar System",
 };
 
 export default function PlanetsPage() {
@@ -13,9 +13,9 @@ export default function PlanetsPage() {
     <main className="container mx-auto px-4 py-12 max-w-7xl">
       <section className="mb-16">
         <div className="text-center mb-12">
-          <TextStyled text="Our Solar System" />
+          <TextStyled text=" Nosso Sistema Solar" />
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-            Explore the planets in our cosmic neighborhood and discover their unique characteristics.
+          Explore os planetas do nosso sistema solar e descubra suas características únicas.
           </p>
         </div>
 
