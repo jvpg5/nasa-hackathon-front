@@ -66,7 +66,7 @@ export default function Home() {
       {/* Header */}
       <Header />
 
-      <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-24 mt-48 mb-128">
+      <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-24 mt-60 mb-128">
         <TextStyled text="Welcome to NASA Explorer" />
         <ShinyTextStyled
           text="Discover the cosmos, one discovery at a time."
