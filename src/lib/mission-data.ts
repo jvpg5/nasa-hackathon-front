@@ -164,7 +164,7 @@ export const missionData: MissionCardData[] = [
     id: 'viking-lander',
     title: 'Viking Lander',
     description: 'First spacecraft to successfully land on Mars and perform a mission from the surface.',
-    imgSrc: '/missions/viking-lander.jpg',
+    imgSrc: '/missions/vikilan.jpg',
     alt: 'Image of Viking Lander',
     href: '/galery?target=viking-lander'
   },
@@ -180,7 +180,7 @@ export const missionData: MissionCardData[] = [
     id: 'viking-orbiter',
     title: 'Viking Orbiter',
     description: 'Captured detailed images of Mars from orbit while delivering the Viking landers to the surface.',
-    imgSrc: '/missions/viking-orbiter.jpg',
+    imgSrc: '/missions/vikiorb.jpg',
     alt: 'Image of Viking Orbiter',
     href: '/galery?target=viking-orbiter'
   },
