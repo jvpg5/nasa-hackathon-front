@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import Particles from "@/components/Particles";
 import SpotlightCard from "@/components/SpotlightCard";
 import Link from "next/link";
+import TextStyled from "@/components/ui/textstyled";
+import ShinyTextStyled from "@/components/ui/ShinyTextStyled";
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById("gallery-section");
@@ -19,7 +21,7 @@ export default function Home() {
       description: "Descubra imagens de planetas incíveis!",
       imgSrc: "/nasa5.png",
       alt: "Planetas",
-      href: "Planets"
+      href: "Planets",
     },
     {
       id: 2,
@@ -27,7 +29,7 @@ export default function Home() {
       description: "Descubra imagens por satelites !",
       imgSrc: "/nasa7.png",
       alt: "Satélites",
-      href: "Satelites"
+      href: "Satelites",
     },
     {
       id: 3,
@@ -35,7 +37,7 @@ export default function Home() {
       description: "Descubra imagens por cada missão da NASA!",
       imgSrc: "/nasa8.jpg",
       alt: "Missões",
-      href: "Missions"
+      href: "Missions",
     },
   ];
 
@@ -65,23 +67,11 @@ export default function Home() {
       <Header />
 
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-24 mt-48 mb-128">
-        <h1 className="text-white text-4xl md:text-5xl font-bold mb-4 text-center relative">
-          <span className="bg-gradient-to-r from-white via-blue-200 to-white bg-clip-text text-transparent animate-pulse">
-            Teste
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer bg-[length:200%_100%] bg-clip-text text-transparent">
-            Teste
-          </span>
-        </h1>
-        <p className="text-white text-xl md:text-2xl font-semibold mb-10 text-center tracking-wide relative">
-          <span className="bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent animate-pulse">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer bg-[length:200%_100%] bg-clip-text text-transparent">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </span>
-        </p>
-        <div className="flex gap-6">
+        <TextStyled text="Welcome to NASA Explorer" />
+        <ShinyTextStyled
+          text="Discover the cosmos, one discovery at a time."
+        />
+        <div className="flex gap-6 mt-8">
           <Button
             onClick={scrollToGallery}
             className="bg-white text-black font-semibold px-8 py-2 rounded-full shadow transition hover:bg-gray-200"
@@ -121,22 +111,20 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-80">
               {galleryItems.map((item) => (
-                <Link href={item.href} key={item.id} >
-                <div
-                  className="hover:cursor-pointer bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105"
-                >
-                  <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
-                    <img
-                      src={item.imgSrc}
-                      alt={item.alt}
-                      className="object-cover w-full h-full rounded-lg"
-                    />
+                <Link href={item.href} key={item.id}>
+                  <div className="hover:cursor-pointer bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105">
+                    <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                      <img
+                        src={item.imgSrc}
+                        alt={item.alt}
+                        className="object-cover w-full h-full rounded-lg"
+                      />
+                    </div>
+                    <h4 className="text-white font-semibold text-sm mb-1">
+                      {item.title}
+                    </h4>
+                    <p className="text-gray-400 text-xs">{item.description}</p>
                   </div>
-                  <h4 className="text-white font-semibold text-sm mb-1">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-400 text-xs">{item.description}</p>
-                </div>
                 </Link>
               ))}
             </div>

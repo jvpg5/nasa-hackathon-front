@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { planetData } from '@/lib/planet-data';
+import TextStyled from '@/components/ui/textstyled';
 
 export const metadata = {
   title: 'Planets | NASA Explorer',
@@ -11,9 +12,7 @@ export default function PlanetsPage() {
     <main className="container mx-auto px-4 py-12 max-w-7xl">
       <section className="mb-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white tracking-tight">
-            Our Solar System
-          </h1>
+          <TextStyled text="Our Solar System" />
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Explore the planets in our cosmic neighborhood and discover their unique characteristics.
           </p>
