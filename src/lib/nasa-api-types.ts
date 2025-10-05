@@ -33,13 +33,13 @@ export interface NasaAPIParams {
    * Name of the instrument
    * Examples: 'MAHLI', 'NAVCAM', 'MASTCAM'
    */
-  instrument_name?: string;
+  instrument?: string;
   
   /**
    * Name of the mission
    * Examples: 'MSL', 'MRO', 'VOYAGER'
    */
-  mission_name?: string;
+  mission?: string;
   
   /**
    * PDS Archive Status

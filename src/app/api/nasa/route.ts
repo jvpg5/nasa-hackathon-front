@@ -17,11 +17,10 @@ export async function GET(request: Request) {
   // Additional search parameters based on API documentation
   const target = searchParams.get('target');
   const instrument = searchParams.get('instrument_name');
-  const mission = searchParams.get('mission_name');
+  const mission = searchParams.get('mission');
   const datasetId = searchParams.get('pds_archive_status');
   const productType = searchParams.get('primary_product_type');
   const filters = searchParams.get('fq');
-  const sort = searchParams.get('sort') || 'score desc';
   
   // Date range filters
   const startDate = searchParams.get('start_date');
@@ -35,7 +34,6 @@ export async function GET(request: Request) {
   const params: Record<string, string> = {
     start,
     rows,
-    sort,
     // 'q' accepts apache solr query, by defaults has this one
     q: "+ATLAS_THUMBNAIL_URL:* -ATLAS_THUMBNAIL_URL:brwsnotavail.jpg +ATLAS_BROWSE_URL:* -ATLAS_BROWSE_URL:brwsnotavail.jpg"
   };
@@ -43,8 +41,8 @@ export async function GET(request: Request) {
   // Add conditional parameters
   if (imageContent) params.image_content = imageContent;
   if (target) params.target = target;
-  if (instrument) params.instrument_name = instrument;
-  if (mission) params.mission_name = mission;
+  if (instrument) params.instrument = instrument;
+  if (mission) params.mission = mission;
   if (datasetId) params.pds_archive_status = datasetId;
   if (productType) params.primary_product_type = productType;
   if (filters) params.fq = filters;
