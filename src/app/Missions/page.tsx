@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { missionData } from '@/lib/mission-data';
+import TextStyled from '@/components/ui/textstyled';
 
 export const metadata = {
   title: 'Missions | NASA Explorer',
@@ -11,9 +12,7 @@ export default function MissionsPage() {
     <main className="container mx-auto px-4 py-12 max-w-7xl">
       <section className="mb-16">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white tracking-tight">
-            NASA Space Missions
-          </h1>
+          <TextStyled text="NASA Space Missions" />
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Explore NASA's historic and ongoing missions that have expanded our understanding of the cosmos.
           </p>
