@@ -35,14 +35,14 @@ export async function GET(request: Request) {
     start,
     rows,
     // 'q' accepts apache solr query, by defaults has this one
-    q: "+ATLAS_THUMBNAIL_URL:* -ATLAS_THUMBNAIL_URL:brwsnotavail.jpg +ATLAS_BROWSE_URL:* -ATLAS_BROWSE_URL:brwsnotavail.jpg"
+    q: `+ATLAS_THUMBNAIL_URL:* -ATLAS_THUMBNAIL_URL:brwsnotavail.jpg +ATLAS_BROWSE_URL:* -ATLAS_BROWSE_URL:brwsnotavail.jpg -ATLAS_BROWSE_URL:*starbrite.jpl.nasa.gov*`
   };
 
   // Add conditional parameters
-  if (imageContent) params.image_content = imageContent;
-  if (target) params.target = target;
+  //if (imageContent) params.image_content = imageContent;
+  if (target) params.q += ` +TARGET_NAME:"${target}"`;
   if (instrument) params.instrument = instrument;
-  if (mission) params.mission = mission;
+  if (mission) params.q += ` +ATLAS_MISSION_NAME:"${mission}"`;
   if (datasetId) params.pds_archive_status = datasetId;
   if (productType) params.primary_product_type = productType;
   if (filters) params.fq = filters;
@@ -71,6 +71,7 @@ export async function GET(request: Request) {
 
   try {
     // Forward the request to NASA API
+    console.log(params);
     const response = await axios.get(
       `https://pds-imaging.jpl.nasa.gov/solr/pds_archives/search`,
       {
@@ -79,7 +80,7 @@ export async function GET(request: Request) {
           'Accept': 'application/json',
         },
         // Add timeout to prevent hanging requests
-        timeout: 15000 
+        //timeout: 150000 
       }
     );
 
@@ -93,6 +94,7 @@ export async function GET(request: Request) {
     let errorMessage = 'Failed to fetch data from NASA API';
     
     if (axios.isAxiosError(error)) {
+      console.log(error)
       status = error.response?.status || 500;
       errorMessage = error.response?.data?.message || error.message || errorMessage;
       
