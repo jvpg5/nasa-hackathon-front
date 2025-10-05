@@ -19,7 +19,8 @@ export const planetData: PlanetCardData[] = [
   {
     id: "venus",
     title: "Vênus",
-    description: "O segundo planeta a partir do Sol com uma atmosfera espessa e tóxica.",
+    description:
+      "O segundo planeta a partir do Sol com uma atmosfera espessa e tóxica.",
     imgSrc: "/venus.jpg",
     alt: "Image of Venus",
     href: "/galery?target=venus",
@@ -31,7 +32,7 @@ export const planetData: PlanetCardData[] = [
       "Nosso planeta natal, o único objeto celestial conhecido por abrigar vida.",
     imgSrc: "/earth.jpg",
     alt: "Image of Earth",
-    href: "/galery?target=earth",
+    href: "/galery?target=earth&page=700",
   },
   {
     id: "mars",
