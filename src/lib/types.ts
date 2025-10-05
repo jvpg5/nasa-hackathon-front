@@ -98,6 +98,8 @@ export interface GalleryImage {
   target: string;
   productId: string;
   creationTime: string;
+  spacecraft: string;
+  mission: string;
 }
 
 // Helper function to convert ImageDocument to GalleryImage
@@ -109,8 +111,10 @@ export const toGalleryImage = (doc: ImageDocument): GalleryImage => {
     browseUrl: doc.ATLAS_BROWSE_URL,
     dataUrl: doc.ATLAS_DATA_URL,
     instrument: doc.INSTRUMENT_NAME,
-    target: doc.ATLAS_PRIMARY_TARGET_NAME,
+    target: doc.TARGET_NAME,
     productId: doc.PRODUCT_ID,
-    creationTime: doc.PRODUCT_CREATION_TIME
+    creationTime: doc.PRODUCT_CREATION_TIME,
+    spacecraft: doc.SPACECRAFT_NAME,
+    mission: doc.ATLAS_MISSION_NAME,
   };
 };

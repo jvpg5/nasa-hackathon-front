@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ApiResponse, GalleryImage, toGalleryImage, ImageDocument } from "@/lib/types";
+import { ApiResponse, GalleryImage, toGalleryImage, } from "@/lib/types";
 import Image from "next/image";
 import axios from "axios";
 import { CustomModal, ModalFooter, useModal } from "@/components/ui/custom-modal";
@@ -13,8 +13,8 @@ import "yet-another-react-lightbox/styles.css";
 // Plugins imports
 import Captions from "yet-another-react-lightbox/plugins/captions";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
-import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
-import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+//import Slideshow from "yet-another-react-lightbox/plugins/slideshow";
+//import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
 import Zoom from "yet-another-react-lightbox/plugins/zoom";
 
 // Plugin styles
@@ -433,10 +433,14 @@ export default function ImageGallery({
           title: image.title,
           description: `Target: ${image.target} | Instrument: ${image.instrument} | Created: ${image.creationTime && !isNaN(new Date(image.creationTime).getTime()) ? new Date(image.creationTime).toLocaleDateString() : "N/A"}`
         }))}
-        plugins={[Captions, Fullscreen, Slideshow, Thumbnails, Zoom]}
+        plugins={[Captions, Fullscreen, 
+          
+          //Slideshow, Thumbnails, 
+          
+          Zoom]}
         captions={{ descriptionTextAlign: "center" }}
         carousel={{ finite: images.length <= 1 }}
-        thumbnails={{ width: 120, height: 80 }}
+        //thumbnails={{ width: 120, height: 80 }}
         zoom={{ maxZoomPixelRatio: 5 }}
       />
     </div>
