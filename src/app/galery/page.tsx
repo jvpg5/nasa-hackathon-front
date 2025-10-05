@@ -76,9 +76,6 @@ export default async function Gallery({
   const target = getStringParam(searchParams.target);
   const instrument = getStringParam(searchParams.instrument);
   const mission = getStringParam(searchParams.mission);
-  const sort = getStringParam(searchParams.sort);
-  const startDate = getStringParam(searchParams.start_date);
-  const stopDate = getStringParam(searchParams.stop_date);
 
   // Calculate start index for API
   const start = (page - 1) * rows;
@@ -99,9 +96,6 @@ export default async function Gallery({
             target: target,
             instrument_name: instrument, // Map instrument param to instrument_name
             mission_name: mission, // Map mission param to mission_name
-            sort: sort,
-            start_date: startDate ? `${startDate}T00:00:00Z` : undefined,
-            stop_date: stopDate ? `${stopDate}T23:59:59Z` : undefined,
           }}
           currentPage={page}
         />
