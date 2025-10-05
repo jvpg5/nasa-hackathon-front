@@ -5,10 +5,12 @@ import { missionData } from '@/lib/mission-data';
 import TextStyled from '@/components/ui/textstyled';
 import SpotlightCard from '@/components/SpotlightCard';
 import Particles from '@/components/Particles';
+import Header from '@/components/header';
 
 export default function MissionsPage() {
   return (
-    <div className="relative min-h-screen bg-[#0A0814] flex flex-col items-center justify-start">
+    <div className="relative min-h-screen bg-[#0A0814] flex flex-col items-center justify-start ">
+      <Header />
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
@@ -28,7 +30,7 @@ export default function MissionsPage() {
           className="w-full h-full"
         />
       </div>
-      <main className="container mx-auto px-4 py-12 max-w-7xl z-10">
+      <main className="container mx-auto px-4 pt-24 pb-12 max-w-7xl z-10">
         <div
           className="bg-yellow-200/10 border border-blue-400 text-blue-300 px-4 py-3 rounded-lg relative mb-8"
           role="alert"

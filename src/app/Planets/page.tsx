@@ -2,6 +2,7 @@ import Link from "next/link";
 import { planetData } from "@/lib/planet-data";
 import TextStyled from "@/components/ui/textstyled";
 import SpotlightCard from "@/components/SpotlightCard";
+import Header from "@/components/header";
 
 export const metadata = {
   title: "Planets | Space Vision",
@@ -10,7 +11,8 @@ export const metadata = {
 
 export default function PlanetsPage() {
   return (
-    <main className="container mx-auto px-4 py-12 max-w-7xl">
+    <main className="container mx-auto px-4 pt-24 pb-12 max-w-7xl">
+      <Header />
       <div
         className="bg-yellow-200/10 border border-blue-400 text-blue-300 px-4 py-3 rounded-lg relative mb-8"
         role="alert"

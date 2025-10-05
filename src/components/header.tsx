@@ -9,8 +9,7 @@ export default function Header() {
                 <span className="text-white text-base font-normal">Space Vision</span>
             </div>
             <nav className="flex items-center gap-6">
-                <a href="#" className="text-white font-normal text-xs hover:underline transition">Home</a>
-                <a href="#" className="text-white font-normal text-xs hover:underline transition">Saiba Mais</a>
+                <a href="/" className="text-white font-normal text-xs hover:underline transition pr-10">Home</a>
             </nav>
         </div>
     );

@@ -48,7 +48,7 @@ export const planetData: PlanetCardData[] = [
     title: "Júpiter",
     description:
       "O maior planeta do nosso Sistema Solar com uma distinta Grande Mancha Vermelha.",
-    imgSrc: "/jupiter.jpg",
+    imgSrc: "/Jupiter.jpg",
     alt: "Image of Jupiter",
     href: "/galery?target=jupiter",
   },
