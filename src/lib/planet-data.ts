@@ -59,7 +59,7 @@ export const planetData: PlanetCardData[] = [
       "Famoso por seu extenso sistema de anéis composto por partículas de gelo e rocha.",
     imgSrc: "/saturn2.jpg",
     alt: "Image of Saturn",
-    href: "/galery?target=saturn",
+    href: "/galery?target=saturn&page=700",
   },
   {
     id: "uranus",

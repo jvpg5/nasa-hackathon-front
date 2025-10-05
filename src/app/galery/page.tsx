@@ -54,6 +54,8 @@ async function searchAction(formData: FormData) {
   redirect(`/galery-test?${params.toString()}`);
 }
 
+export const runtime = 'edge'; 
+
 export default async function Gallery({
   searchParams,
 }: {

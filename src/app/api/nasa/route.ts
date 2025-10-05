@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
 
+export const runtime = 'edge'; 
+
 /**
  * NASA PDS-Imaging API Integration
  * Documentation: https://pds-imaging.jpl.nasa.gov/tools/atlas/api/
