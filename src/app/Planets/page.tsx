@@ -11,11 +11,22 @@ export const metadata = {
 export default function PlanetsPage() {
   return (
     <main className="container mx-auto px-4 py-12 max-w-7xl">
+      <div
+        className="bg-yellow-200/10 border border-blue-400 text-blue-300 px-4 py-3 rounded-lg relative mb-8"
+        role="alert"
+      >
+        <strong className="font-bold">Aviso: </strong>
+        <span className="block sm:inline">
+          Esta página está passando por instabilidades devido à interrupção do
+          financiamento do governo dos Estados Unidos.
+        </span>
+      </div>
       <section className="mb-16">
         <div className="text-center mb-12">
           <TextStyled text=" Nosso Sistema Solar" />
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-          Explore os planetas do nosso sistema solar e descubra suas características únicas.
+            Explore os planetas do nosso sistema solar e descubra suas
+            características únicas.
           </p>
         </div>
 
