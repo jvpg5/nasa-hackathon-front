@@ -76,7 +76,7 @@ export const missionData: MissionCardData[] = [
     id: 'lunar-orbiter',
     title: 'Lunar Orbiter',
     description: 'Series of five spacecraft that mapped the Moon\'s surface to prepare for Apollo landings.',
-    imgSrc: '/missions/lunar-orbiter.jpg',
+    imgSrc: '/missions/lunarorbiter.jpg',
     alt: 'Image of Lunar Orbiter',
     href: '/galery?target=lunar-orbiter'
   },
@@ -84,7 +84,7 @@ export const missionData: MissionCardData[] = [
     id: 'lunar-reconnaissance-orbiter',
     title: 'Lunar Reconnaissance Orbiter',
     description: 'Mapping the Moon in unprecedented detail to identify safe landing sites and potential resources.',
-    imgSrc: '/missions/lro.jpg',
+    imgSrc: '/missions/lunar.jpg',
     alt: 'Image of Lunar Reconnaissance Orbiter',
     href: '/galery?target=lunar-reconnaissance-orbiter'
   },
@@ -116,7 +116,7 @@ export const missionData: MissionCardData[] = [
     id: 'mars-pathfinder',
     title: 'Mars Pathfinder',
     description: 'Delivered the first rover, Sojourner, to the surface of Mars in 1997.',
-    imgSrc: '/missions/pathfinder.jpg',
+    imgSrc: '/missions/marsp.jpg',
     alt: 'Image of Mars Pathfinder',
     href: '/galery?target=mars-pathfinder'
   },
@@ -148,7 +148,7 @@ export const missionData: MissionCardData[] = [
     id: 'new-horizons',
     title: 'New Horizons',
     description: 'First mission to Pluto, revealing detailed images and data about the dwarf planet and its moons.',
-    imgSrc: '/missions/new-horizons.jpg',
+    imgSrc: '/missions/newh.jpg',
     alt: 'Image of New Horizons spacecraft',
     href: '/galery?target=new-horizons'
   },
