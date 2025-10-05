@@ -30,7 +30,7 @@ export const planetData: PlanetCardData[] = [
     description: 'Our home planet, the only known celestial object to harbor life.',
     imgSrc: '/planets/earth.jpg',
     alt: 'Image of Earth',
-    href: '/galery?target=earth'
+    href: '/galery?target=earth&page=700'
   },
   {
     id: 'mars',
