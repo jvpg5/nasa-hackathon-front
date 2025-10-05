@@ -13,7 +13,6 @@ const scrollToGallery = () => {
 export default function Home() {
   return (
     <div className="relative min-h-screen bg-[#0A0814] flex flex-col items-center justify-start">
-      {/* Particles background effect */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 z-0 overflow-hidden"

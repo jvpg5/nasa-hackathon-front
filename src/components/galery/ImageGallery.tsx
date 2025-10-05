@@ -175,8 +175,20 @@ export default function ImageGallery({
   };
   
   return (
-    <div className="container mx-auto py-8">
-      <h2 className="text-2xl font-bold mb-6">NASA Images - {query}</h2>
+    <div className="w-full">
+      <div className="flex flex-wrap justify-between items-baseline gap-4 mb-6">
+        <h2 className="text-2xl font-bold text-gray-100">
+          NASA Images - <span className="capitalize">{query}</span>
+        </h2>
+        {data && (
+          <div className="text-sm text-gray-400">
+            <span>Total results: {data.response.numFound}</span>
+            <span className="ml-4">
+              Query time: {data.responseHeader.QTime}ms
+            </span>
+          </div>
+        )}
+      </div>
       
       {loading && (
         <div className="flex flex-col justify-center items-center h-64">
@@ -287,14 +299,6 @@ export default function ImageGallery({
       )}
 
       
-
-      {/* Metadata */}
-      {data && (
-        <div className="mt-8 text-sm text-gray-500">
-          <p>Total results: {data.response.numFound}</p>
-          <p>Query time: {data.responseHeader.QTime}ms</p>
-        </div>
-      )}
 
       {/* Image Preview Modal - Usando nosso componente personalizado */}
       <CustomModal 
