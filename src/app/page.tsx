@@ -7,6 +7,7 @@ import SpotlightCard from "@/components/SpotlightCard";
 import Link from "next/link";
 import TextStyled from "@/components/ui/textstyled";
 import ShinyTextStyled from "@/components/ui/ShinyTextStyled";
+import { Search, Orbit, BrainCircuit } from "lucide-react";
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById("gallery-section");
@@ -99,9 +100,9 @@ export default function Home() {
 
       <section
         id="gallery-section"
-        className="relative w-full py-20 px-4 mt-20"
+        className="relative w-full py-20 px-4 mt-20 scroll-mt-28"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto mb-20">
           <div className="text-center mb-6">
             <h2 className="text-white text-4xl md:text-5xl font-bold mt-10 mb-4">
               Galeria Espacial
@@ -163,6 +164,51 @@ export default function Home() {
         </div>
       </section>
       
+      <section id="ai-section" className="relative w-full py-20 px-4 mt-20 scroll-mt-28">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-6">
+            <TextStyled text="Em Breve: Integração com Inteligência Artificial" />
+            <ShinyTextStyled text="Explicações detalhadas e educativas com dados da NASA." />
+            <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto mt-8">
+              Nossa futura integração com IA irá transformar a maneira como você explora o universo. 
+              
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
+            <SpotlightCard>
+              <div className="p-6 text-center">
+                <Search className="h-10 w-10 mx-auto text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-3">Análise de Imagens</h3>
+                <p className="text-gray-400 text-sm">
+                  A IA poderá analisar a composição de uma imagem, identificando crateras, formações geológicas e anomalias, 
+                  oferecendo uma descrição detalhada do que estamos vendo.
+                </p>
+              </div>
+            </SpotlightCard>
+            <SpotlightCard>
+              <div className="p-6 text-center">
+                <Orbit className="h-10 w-10 mx-auto text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-3">Conexões Cósmicas</h3>
+                <p className="text-gray-400 text-sm">
+                  Descubra como uma imagem se conecta a outras missões, instrumentos ou descobertas. A IA criará uma teia de 
+                  conhecimento, ligando um ponto a outro no vasto mapa do universo.
+                </p>
+              </div>
+            </SpotlightCard>
+            <SpotlightCard>
+              <div className="p-6 text-center">
+                <BrainCircuit className="h-10 w-10 mx-auto text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-3">Aprendizado Interativo</h3>
+                <p className="text-gray-400 text-sm">
+                  Faça perguntas diretas sobre uma imagem, como "Que tipo de nebulosa é essa?" ou "Qual a idade desta estrela?", 
+                  e receba respostas educativas e precisas em tempo real.
+                </p>
+              </div>
+            </SpotlightCard>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 }

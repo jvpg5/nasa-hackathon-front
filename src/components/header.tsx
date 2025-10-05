@@ -9,7 +9,8 @@ export default function Header() {
                 <span className="text-white text-base font-normal">Space Vision</span>
             </div>
             <nav className="flex items-center gap-6">
-                <a href="/" className="text-white font-normal text-xs hover:underline transition pr-10">Home</a>
+                <a href="/" className="text-white font-normal text-xs hover:underline transition">Home</a>
+                <a href="/#ai-section" className="rounded-full border border-white/30 px-4 py-2 text-xs font-normal text-white transition-colors hover:bg-white/20">Em breve</a>
             </nav>
         </div>
     );
