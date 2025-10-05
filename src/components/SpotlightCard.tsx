@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useRef, useState } from 'react';
 
 interface Position {
@@ -8,12 +10,14 @@ interface Position {
 interface SpotlightCardProps extends React.PropsWithChildren {
   className?: string;
   spotlightColor?: `rgba(${number}, ${number}, ${number}, ${number})`;
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const SpotlightCard: React.FC<SpotlightCardProps> = ({
   children,
   className = '',
-  spotlightColor = 'rgba(255, 255, 255, 0.25)'
+  spotlightColor = 'rgba(255, 255, 255, 0.25)',
+  onClick,
 }) => {
   const divRef = useRef<HTMLDivElement>(null);
   const [isFocused, setIsFocused] = useState<boolean>(false);
@@ -53,6 +57,7 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
       className={`relative rounded-3xl border border-slate-700/70 bg-slate-900/50 overflow-hidden p-8 ${className}`}
     >
       <div

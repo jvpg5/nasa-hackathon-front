@@ -67,9 +67,9 @@ export default function Home() {
       <Header />
 
       <main className="relative z-10 flex flex-col items-center justify-center flex-1 w-full pt-24 mt-60 mb-128">
-        <TextStyled text="Welcome to NASA Explorer" />
+        <TextStyled text="Bem-vindo ao Space Vision" />
         <ShinyTextStyled
-          text="Discover the cosmos, one discovery at a time."
+          text="Descubra o espaço, uma descoberta por vez."
         />
         <div className="flex gap-6 mt-8">
           <Button
@@ -81,11 +81,12 @@ export default function Home() {
             Galeria
           </Button>
           <Button
+            id="about-us-section"
             className="bg-transparent border border-white text-white font-semibold px-8 py-2 rounded-full shadow transition hover:bg-white hover:text-black"
             variant="outline"
             size="lg"
-          >
-            Learn More
+          > 
+            Saiba Mais 
           </Button>
         </div>
       </main>
@@ -95,7 +96,7 @@ export default function Home() {
         className="relative w-full py-20 px-4 mt-20"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-6">
             <h2 className="text-white text-4xl md:text-5xl font-bold mt-10 mb-4">
               Galeria Espacial
             </h2>
@@ -110,27 +111,52 @@ export default function Home() {
               Clique em uma categoria abaixo para explorar as imagens
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-80">
-              {galleryItems.map((item) => (
-                <Link href={item.href} key={item.id}>
-                  <div className="hover:cursor-pointer bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105">
-                    <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+              {galleryItems.map((item) => {
+                const isSatellites = item.title === "Satélites";
+                const card = (
+                  <div
+                    className={`bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 transition-all duration-300 ${
+                      isSatellites
+                        ? "hover:cursor-not-allowed"
+                        : "hover:cursor-pointer hover:border-gray-500/70 hover:scale-105"
+                    }`}
+                  >
+                    <div className="aspect-square relative bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                       <img
                         src={item.imgSrc}
                         alt={item.alt}
                         className="object-cover w-full h-full rounded-lg"
                       />
+                      {isSatellites && (
+                        <div className="absolute inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center">
+                          <p className="text-white text-2xl font-bold">
+                            Em breve
+                          </p>
+                        </div>
+                      )}
                     </div>
                     <h4 className="text-white font-semibold text-sm mb-1">
                       {item.title}
                     </h4>
                     <p className="text-gray-400 text-xs">{item.description}</p>
                   </div>
-                </Link>
-              ))}
+                );
+
+                if (isSatellites) {
+                  return <div key={item.id}>{card}</div>;
+                }
+
+                return (
+                  <Link href={item.href} key={item.id}>
+                    {card}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
       </section>
+      
     </div>
   );
 }

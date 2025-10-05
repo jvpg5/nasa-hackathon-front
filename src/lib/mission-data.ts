@@ -11,177 +11,177 @@ export const missionData: MissionCardData[] = [
   {
     id: '2001 mars odyssey',
     title: '2001 Mars Odyssey',
-    description: 'Longest-serving spacecraft at Mars, studying the planet\'s surface and providing communication relay.',
+    description: 'A espaçonave mais antiga em Marte, estudando a superfície do planeta e fornecendo retransmissão de comunicação.',
     imgSrc: '/missions/marsodyssey.jpg',
-    alt: 'Image of 2001 Mars Odyssey',
+    alt: 'Imagem da 2001 Mars Odyssey',
     href: '/galery?mission=2001 mars odyssey'
   },
   {
     id: 'cassini',
     title: 'Cassini',
-    description: 'Explored Saturn, its rings, and moons over a 13-year mission that revolutionized our understanding of the system.',
+    description: 'Explorou Saturno, seus anéis e luas ao longo de uma missão de 13 anos que revolucionou nossa compreensão do sistema.',
     imgSrc: '/missions/cassini.jpg',
-    alt: 'Image of Cassini spacecraft',
+    alt: 'Imagem da espaçonave Cassini',
     href: '/galery?mission=cassini'
   },
   {
     id: 'chandrayaan 1',
     title: 'Chandrayaan-1',
-    description: 'India\'s first lunar probe that discovered evidence of water molecules on the Moon\'s surface.',
+    description: 'A primeira sonda lunar da Índia que descobriu evidências de moléculas de água na superfície da Lua.',
     imgSrc: '/missions/chanaofc.jpg',
-    alt: 'Image of Chandrayaan-1',
+    alt: 'Imagem da Chandrayaan-1',
     href: '/galery?mission=chandrayaan 1'
   },
   {
     id: 'clementine',
     title: 'Clementine',
-    description: 'Mapped the Moon\'s surface and found evidence suggesting the presence of water ice.',
+    description: 'Mapeou a superfície da Lua e encontrou evidências que sugerem a presença de gelo de água.',
     imgSrc: '/missions/clementine.jpg',
-    alt: 'Image of Clementine spacecraft',
+    alt: 'Imagem da espaçonave Clementine',
     href: '/galery?mission=clementine'
   },
   {
     id: 'galileo',
     title: 'Galileo',
-    description: 'Studied Jupiter and its moons, providing crucial data about Jupiter\'s atmosphere and its largest satellites.',
+    description: 'Estudou Júpiter e suas luas, fornecendo dados cruciais sobre a atmosfera de Júpiter e seus maiores satélites.',
     imgSrc: '/missions/galileo.jpeg',
-    alt: 'Image of Galileo spacecraft',
+    alt: 'Imagem da espaçonave Galileo',
     href: '/galery?mission=galileo'
   },
   {
     id: 'insight',
     title: 'InSight',
-    description: 'Studying the interior of Mars to understand the formation and evolution of rocky planets.',
+    description: 'Estudando o interior de Marte para entender a formação e evolução de planetas rochosos.',
     imgSrc: '/missions/insight.jpg',
-    alt: 'Image of InSight lander',
+    alt: 'Imagem do lander InSight',
     href: '/galery?mission=insight'
   },
   {
     id: 'juno',
     title: 'Juno',
-    description: 'Investigating Jupiter\'s composition, gravity field, magnetic field, and polar magnetosphere.',
+    description: 'Investigando a composição, campo gravitacional, campo magnético e magnetosfera polar de Júpiter.',
     imgSrc: '/missions/juno.jpg',
-    alt: 'Image of Juno spacecraft',
+    alt: 'Imagem da espaçonave Juno',
     href: '/galery?mission=juno'
   },
   {
     id: 'lcross',
     title: 'LCROSS',
-    description: 'Mission that confirmed the presence of water ice in a permanently shadowed lunar crater.',
+    description: 'Missão que confirmou a presença de gelo de água em uma cratera lunar permanentemente sombreada.',
     imgSrc: '/missions/lcross.jpg',
-    alt: 'Image of LCROSS spacecraft',
+    alt: 'Imagem da espaçonave LCROSS',
     href: '/galery?mission=lcross'
   },
   {
     id: 'lunar orbiter',
     title: 'Lunar Orbiter',
-    description: 'Series of five spacecraft that mapped the Moon\'s surface to prepare for Apollo landings.',
+    description: 'Série de cinco espaçonaves que mapearam a superfície da Lua para se preparar para os pousos da Apollo.',
     imgSrc: '/missions/lunarorbiter.jpg',
-    alt: 'Image of Lunar Orbiter',
+    alt: 'Imagem da Lunar Orbiter',
     href: '/galery?mission=lunar orbiter'
   },
   {
     id: 'lunar reconnaissance orbiter',
     title: 'Lunar Reconnaissance Orbiter',
-    description: 'Mapping the Moon in unprecedented detail to identify safe landing sites and potential resources.',
+    description: 'Mapeando a Lua em detalhes sem precedentes para identificar locais de pouso seguros e recursos potenciais.',
     imgSrc: '/missions/lunar.jpg',
-    alt: 'Image of Lunar Reconnaissance Orbiter',
+    alt: 'Imagem da Lunar Reconnaissance Orbiter',
     href: '/galery?mission=lunar reconnaissance orbiter'
   },
   {
     id: 'magellan',
     title: 'Magellan',
-    description: 'Mapped the surface of Venus using radar, revealing volcanic features and impact craters.',
+    description: 'Mapeou a superfície de Vênus usando radar, revelando características vulcânicas e crateras de impacto.',
     imgSrc: '/missions/magellan.jpg',
-    alt: 'Image of Magellan spacecraft',
+    alt: 'Imagem da espaçonave Magellan',
     href: '/galery?mission=magellan'
   },
   {
     id: 'mars exploration rover',
     title: 'Mars Exploration Rover',
-    description: 'Twin rovers Spirit and Opportunity that explored the Martian surface and found evidence of past water.',
+    description: 'Rovers gêmeos Spirit e Opportunity que exploraram a superfície marciana e encontraram evidências de água no passado.',
     imgSrc: '/missions/mer.jpg',
-    alt: 'Image of Mars Exploration Rover',
+    alt: 'Imagem do Mars Exploration Rover',
     href: '/galery?mission=mars-exploration rover'
   },
   {
     id: 'mars global surveyor',
     title: 'Mars Global Surveyor',
-    description: 'Mapped Mars for a full Martian year, providing detailed data about its surface and atmosphere.',
+    description: 'Mapeou Marte por um ano marciano completo, fornecendo dados detalhados sobre sua superfície e atmosfera.',
     imgSrc: '/missions/mgs.jpg',
-    alt: 'Image of Mars Global Surveyor',
+    alt: 'Imagem do Mars Global Surveyor',
     href: '/galery?mission=mars-global-surveyor'
   },
   {
     id: 'mars pathfinder',
     title: 'Mars Pathfinder',
-    description: 'Delivered the first rover, Sojourner, to the surface of Mars in 1997.',
+    description: 'Entregou o primeiro rover, Sojourner, à superfície de Marte em 1997.',
     imgSrc: '/missions/marsp.jpg',
-    alt: 'Image of Mars Pathfinder',
+    alt: 'Imagem do Mars Pathfinder',
     href: '/galery?mission=mars-pathfinder'
   },
   {
     id: 'mars reconnaissance orbiter',
     title: 'Mars Reconnaissance Orbiter',
-    description: 'Studying Mars with high-resolution cameras and sensors to understand its climate and geology.',
+    description: 'Estudando Marte com câmeras e sensores de alta resolução para entender seu clima e geologia.',
     imgSrc: '/missions/mro.jpg',
-    alt: 'Image of Mars Reconnaissance Orbiter',
+    alt: 'Imagem do Mars Reconnaissance Orbiter',
     href: '/galery?mission=mars reconnaissance orbiter'
   },
   {
     id: 'mars science laboratory',
     title: 'Mars Science Laboratory',
-    description: 'Mission featuring the Curiosity rover, investigating Mars\' habitability and climate history.',
+    description: 'Missão com o rover Curiosity, investigando a habitabilidade e a história climática de Marte.',
     imgSrc: '/missions/msl.jpg',
-    alt: 'Image of Mars Science Laboratory',
+    alt: 'Imagem do Mars Science Laboratory',
     href: '/galery?mission=mars science laboratory'
   },
   {
     id: 'messenger',
     title: 'MESSENGER',
-    description: 'First spacecraft to orbit Mercury, providing unprecedented data about the innermost planet.',
+    description: 'Primeira espaçonave a orbitar Mercúrio, fornecendo dados sem precedentes sobre o planeta mais interno.',
     imgSrc: '/missions/messenger.jpg',
-    alt: 'Image of MESSENGER spacecraft',
+    alt: 'Imagem da espaçonave MESSENGER',
     href: '/galery?mission=messenger'
   },
   {
     id: 'new horizons',
     title: 'New Horizons',
-    description: 'First mission to Pluto, revealing detailed images and data about the dwarf planet and its moons.',
+    description: 'Primeira missão a Plutão, revelando imagens e dados detalhados sobre o planeta anão e suas luas.',
     imgSrc: '/missions/newh.jpg',
-    alt: 'Image of New Horizons spacecraft',
+    alt: 'Imagem da espaçonave New Horizons',
     href: '/galery?mission=new horizons'
   },
   {
     id: 'phoenix',
     title: 'Phoenix',
-    description: 'Mars lander that confirmed the presence of water ice just below the surface in the Martian arctic.',
+    description: 'Lander de Marte que confirmou a presença de gelo de água logo abaixo da superfície no ártico marciano.',
     imgSrc: '/missions/phoenix.jpg',
-    alt: 'Image of Phoenix lander',
+    alt: 'Imagem do lander Phoenix',
     href: '/galery?mission=phoenix'
   },
   {
     id: 'viking lander',
     title: 'Viking Lander',
-    description: 'First spacecraft to successfully land on Mars and perform a mission from the surface.',
+    description: 'Primeira espaçonave a pousar com sucesso em Marte e realizar uma missão da superfície.',
     imgSrc: '/missions/vikilan.jpg',
-    alt: 'Image of Viking Lander',
+    alt: 'Imagem do Viking Lander',
     href: '/galery?mission=viking lander'
   },
   {
     id: 'voyager',
     title: 'Voyager',
-    description: 'Twin spacecraft that explored the outer planets and are now traveling through interstellar space.',
+    description: 'Espaçonaves gêmeas que exploraram os planetas exteriores e agora estão viajando pelo espaço interestelar.',
     imgSrc: '/missions/voyager.jpg',
-    alt: 'Image of Voyager spacecraft',
+    alt: 'Imagem da espaçonave Voyager',
     href: '/galery?mission=voyager'
   },
   {
     id: 'viking orbiter',
     title: 'Viking Orbiter',
-    description: 'Captured detailed images of Mars from orbit while delivering the Viking landers to the surface.',
+    description: 'Capturou imagens detalhadas de Marte da órbita enquanto entregava os landers Viking à superfície.',
     imgSrc: '/missions/vikiorb.jpg',
-    alt: 'Image of Viking Orbiter',
+    alt: 'Imagem do Viking Orbiter',
     href: '/galery?mission=viking orbiter'
   },
 ];

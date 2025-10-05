@@ -31,9 +31,9 @@ export default function MissionsPage() {
       <main className="container mx-auto px-4 py-12 max-w-7xl z-10">
         <section className="mb-16">
           <div className="text-center mb-12">
-            <TextStyled text="NASA Space Missions" />
+            <TextStyled text="Missões Espaciais da NASA" />
             <p className="text-xl text-gray-400 max-w-3xl mx-auto mt-4">
-              Explore NASA's historic and ongoing missions that have expanded our understanding of the cosmos.
+              Explore as missões históricas e atuais da NASA que expandiram nossa compreensão do cosmos.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

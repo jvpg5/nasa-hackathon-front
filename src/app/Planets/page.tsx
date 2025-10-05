@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { planetData } from '@/lib/planet-data';
 import TextStyled from '@/components/ui/textstyled';
+import SpotlightCard from '@/components/SpotlightCard';
 
 export const metadata = {
   title: 'Planets | NASA Explorer',
@@ -18,22 +19,22 @@ export default function PlanetsPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-80">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-80">
           {planetData.map((planet) => (
             <Link href={planet.href} key={planet.id}>
-              <div className="hover:cursor-pointer bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105">
-                <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+              <SpotlightCard className="hover:cursor-pointer h-full">
+                <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                   <img
                     src={planet.imgSrc}
                     alt={planet.alt}
                     className="object-cover w-full h-full rounded-lg"
                   />
                 </div>
-                <h4 className="text-white font-semibold text-sm mb-1">
+                <h4 className="text-white font-semibold text-lg mb-2">
                   {planet.title}
                 </h4>
-                <p className="text-gray-400 text-xs">{planet.description}</p>
-              </div>
+                <p className="text-gray-400 text-sm">{planet.description}</p>
+              </SpotlightCard>
             </Link>
           ))}
         </div>

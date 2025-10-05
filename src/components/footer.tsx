@@ -1,19 +1,16 @@
 import { Focus, Lightbulb, Users } from "lucide-react";
 
 const Footer = () => {
-  function handleAnimationComplete(): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <footer className="bg-gray-900/50 py-20 px-4">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-white text-4xl md:text-5xl font-bold mb-4">
-            Lorem ipsum dolor sit amet
+            Rumo ao Futuro com Inovação
           </h2>
           <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Estamos na vanguarda da revolução tecnológica, criando soluções que
+            moldarão o amanhã.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
@@ -22,10 +19,11 @@ const Footer = () => {
               <Focus className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-white text-2xl font-semibold mb-2">
-              Lorem ipsum 
+              Visão de Futuro
             </h3>
             <p className="text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nossa missão é estar sempre à frente, desenvolvendo tecnologias
+              que resolvem os desafios do presente e do futuro.
             </p>
           </div>
           <div className="flex flex-col items-center">
@@ -33,10 +31,11 @@ const Footer = () => {
               <Lightbulb className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-white text-2xl font-semibold mb-2">
-              Lorem ipsum 
+              Criatividade sem Limites
             </h3>
             <p className="text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Nossas equipes colaboram para transformar ideias ousadas em
+              inovações práticas e impactantes para o mundo.
             </p>
           </div>
           <div className="flex flex-col items-center">
@@ -44,15 +43,19 @@ const Footer = () => {
               <Users className="w-8 h-8 text-white" />
             </div>
             <h3 className="text-white text-2xl font-semibold mb-2">
-              Lorem ipsum 
+              Comunidade Colaborativa
             </h3>
             <p className="text-gray-400">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Unimos talentos diversos para construir um futuro onde a
+              tecnologia nos conecta e impulsiona a humanidade.
             </p>
           </div>
         </div>
         <div className="text-center mt-16 text-gray-500">
-          <p>&copy; {new Date().getFullYear()} NASA Hackathon. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} NASA Hackathon. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>
