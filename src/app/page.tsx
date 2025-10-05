@@ -11,6 +11,30 @@ const scrollToGallery = () => {
 };
 
 export default function Home() {
+  const galleryItems = [
+    {
+      id: 1,
+      title: "Planetas",
+      description: "Descubra imagens de planetas incíveis!",
+      imgSrc: "/nasa5.png",
+      alt: "Planetas",
+    },
+    {
+      id: 2,
+      title: "Satélites",
+      description: "Descubra imagens por satelites !",
+      imgSrc: "/nasa7.png",
+      alt: "Satélites",
+    },
+    {
+      id: 3,
+      title: "Missões",
+      description: "Descubra imagens por cada missão da NASA!",
+      imgSrc: "/nasa8.jpg",
+      alt: "Missões",
+    },
+  ];
+
   return (
     <div className="relative min-h-screen bg-[#0A0814] flex flex-col items-center justify-start">
       <div
@@ -78,7 +102,7 @@ export default function Home() {
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-white text-4xl md:text-5xl font-bold mb-4">
+            <h2 className="text-white text-4xl md:text-5xl font-bold mt-10 mb-4">
               Galeria Espacial
             </h2>
             <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto">
@@ -89,43 +113,25 @@ export default function Home() {
           {/* Gallery Preview */}
           <div className="text-center">
             <p className="text-gray-400 text-lg mb-8">
-              Clique em uma categoria acima para explorar as imagens
+              Clique em uma categoria abaixo para explorar as imagens
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {[1, 2, 3].map((item) => (
+              {galleryItems.map((item) => (
                 <div
-                  key={item}
+                  key={item.id}
                   className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105"
                 >
                   <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
-                    {item === 1 ? (
-                      <img
-                        src="/nasa5.png"
-                        alt="Imagem Espacial 1"
-                        className="object-cover w-full h-full rounded-lg"
-                      />
-                    ) : item === 2 ? (
-                      <img
-                        src="/nasa7.png"
-                        alt="Imagem Espacial 2"
-                        className="object-cover w-full h-full rounded-lg"
-                      />
-                    ) : item === 3 ? (
-                      <img
-                        src="/nasa8.jpg"
-                        alt="Imagem Espacial 3"
-                        className="object-cover w-full h-full rounded-lg"
-                      />
-                    ) : (
-                      <span className="text-gray-400 text-sm">
-                        Imagem Espacial {item}
-                      </span>
-                    )}
+                    <img
+                      src={item.imgSrc}
+                      alt={item.alt}
+                      className="object-cover w-full h-full rounded-lg"
+                    />
                   </div>
                   <h4 className="text-white font-semibold text-sm mb-1">
-                    Imagem Espacial {item}
+                    {item.title}
                   </h4>
-                  <p className="text-gray-400 text-xs">Descrição da imagem</p>
+                  <p className="text-gray-400 text-xs">{item.description}</p>
                 </div>
               ))}
             </div>
