@@ -12,7 +12,7 @@ export const missionData: MissionCardData[] = [
     id: '2001-mars-odyssey',
     title: '2001 Mars Odyssey',
     description: 'Longest-serving spacecraft at Mars, studying the planet\'s surface and providing communication relay.',
-    imgSrc: '/missions/mars-odyssey.jpg',
+    imgSrc: '/missions/marsodyssey.jpg',
     alt: 'Image of 2001 Mars Odyssey',
     href: '/galery?target=2001-mars-odyssey'
   },
@@ -28,7 +28,7 @@ export const missionData: MissionCardData[] = [
     id: 'chandrayaan-1',
     title: 'Chandrayaan-1',
     description: 'India\'s first lunar probe that discovered evidence of water molecules on the Moon\'s surface.',
-    imgSrc: '/missions/chandrayaan-1.jpg',
+    imgSrc: '/missions/chanaofc.jpg',
     alt: 'Image of Chandrayaan-1',
     href: '/galery?target=chandrayaan-1'
   },
@@ -44,7 +44,7 @@ export const missionData: MissionCardData[] = [
     id: 'galileo',
     title: 'Galileo',
     description: 'Studied Jupiter and its moons, providing crucial data about Jupiter\'s atmosphere and its largest satellites.',
-    imgSrc: '/missions/galileo.jpg',
+    imgSrc: '/missions/galileo.jpeg',
     alt: 'Image of Galileo spacecraft',
     href: '/galery?target=galileo'
   },
