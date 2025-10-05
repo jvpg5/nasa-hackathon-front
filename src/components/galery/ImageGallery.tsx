@@ -47,9 +47,7 @@ export default function ImageGallery({
   
   // Modal states usando nosso hook personalizado
   const imageModal = useModal();
-  const jsonModal = useModal();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
-  const [selectedImageData, setSelectedImageData] = useState<ImageDocument | null>(null);
   
   // Lightbox states
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
@@ -175,24 +173,7 @@ export default function ImageGallery({
     setLightboxIndex(imageIndex !== -1 ? imageIndex : 0);
     setLightboxOpen(true);
   };
-
-  // Open JSON data modal
-  const openJsonModal = (image: GalleryImage) => {
-    // Find the original document data for this image
-    const originalDoc = data?.response.docs.find(doc => doc.uuid === image.id);
-    if (originalDoc) {
-      setSelectedImageData(originalDoc);
-      jsonModal.onOpen();
-    }
-  };
   
-  // Fechar um modal e abrir outro
-  const openJsonFromImageModal = (image: GalleryImage) => {
-    imageModal.onClose();
-    // Pequeno timeout para permitir a animação de fechamento
-    setTimeout(() => openJsonModal(image), 100);
-  };
-
   return (
     <div className="container mx-auto py-8">
       <h2 className="text-2xl font-bold mb-6">NASA Images - {query}</h2>
@@ -218,49 +199,50 @@ export default function ImageGallery({
       )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {images.map((image) => (
-          <div key={image.id} className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-            <div 
-              className="relative h-48 bg-gray-900 cursor-pointer" 
+        {images.map((image) => {
+          const formattedDate =
+            image.creationTime && !isNaN(new Date(image.creationTime).getTime())
+              ? new Date(image.creationTime).toLocaleDateString()
+              : "N/A";
+
+          return (
+            <div
+              key={image.id}
+              className="bg-slate-900 border border-slate-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-500/10 hover:border-slate-700 transition-all duration-300 ease-in-out transform hover:-translate-y-1 cursor-pointer"
               onClick={() => openImageModal(image)}
             >
-              <Image 
-                src={image.thumbnailUrl} 
-                alt={image.title || "Imagem da nasa"}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                onError={(e) => {
-                  // Fallback to a placeholder if image fails to load
-                  (e.target as HTMLImageElement).src = '/globe.svg';
-                  (e.target as HTMLImageElement).className = 'object-contain p-8';
-                }}
-              />
-            </div>
-            <div className="p-4">
-              <h3 className="text-lg font-semibold mb-2 truncate">{image.title}</h3>
-              <div className="text-sm text-gray-400">
-                <p>Target: {image.target}</p>
-                <p>Instrument: {image.instrument}</p>
-                <p className="truncate">Created: {new Date(image.creationTime).toLocaleDateString()}</p>
+              <div className="relative h-56 w-full">
+                <Image
+                  src={image.thumbnailUrl}
+                  alt={image.title || "NASA Image"}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = "/globe.svg";
+                    (e.target as HTMLImageElement).className =
+                      "object-contain p-8";
+                  }}
+                />
               </div>
-              <div className="mt-4 flex justify-between">
-                <button
-                  className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded transition-colors"  
-                  onClick={() => openImageModal(image)}
+              <div className="p-4">
+                <h3
+                  className="text-lg font-bold mb-2 truncate text-gray-100"
+                  title={image.title}
                 >
-                  View Image
-                </button>
-                <button
-                  className="px-3 py-1 bg-gray-600 hover:bg-gray-700 text-white text-sm rounded transition-colors"  
-                  onClick={() => openJsonModal(image)}
-                >
-                  JSON Data
-                </button>
+                  {image.title}
+                </h3>
+                <div className="text-sm text-gray-400 space-y-1">
+                  <p className="truncate">Target: {image.target || "N/A"}</p>
+                  <p className="truncate">
+                    Instrument: {image.instrument || "N/A"}
+                  </p>
+                  <p className="truncate">Created: {formattedDate}</p>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {images.length === 0 && !loading && !error && (
@@ -341,7 +323,7 @@ export default function ImageGallery({
           <div className="mt-4 text-sm space-y-1">
             <p><strong>Target:</strong> {selectedImage.target}</p>
             <p><strong>Instrument:</strong> {selectedImage.instrument}</p>
-            <p><strong>Created:</strong> {new Date(selectedImage.creationTime).toLocaleDateString()}</p>
+            <p><strong>Created:</strong> {selectedImage.creationTime && !isNaN(new Date(selectedImage.creationTime).getTime()) ? new Date(selectedImage.creationTime).toLocaleDateString() : "N/A"}</p>
             <p className="mt-2">
               <a 
                 href={selectedImage.browseUrl} 
@@ -374,51 +356,7 @@ export default function ImageGallery({
               >
                 Enhanced View
               </button>
-              <button
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-                onClick={() => openJsonFromImageModal(selectedImage)}
-              >
-                View JSON Data
-              </button>
             </>
-          )}
-        </ModalFooter>
-      </CustomModal>
-
-      {/* JSON Data Modal - Usando nosso componente personalizado */}
-      <CustomModal 
-        isOpen={jsonModal.isOpen} 
-        onClose={jsonModal.onClose}
-        title={`Image JSON Data${selectedImage ? ': ' + selectedImage.title : ''}`}
-        size="full"
-      >
-        {selectedImageData ? (
-          <pre className="bg-gray-900 p-4 rounded-md overflow-auto max-h-[60vh] text-sm whitespace-pre-wrap">
-            <code className="text-gray-200">
-              {JSON.stringify(selectedImageData, null, 2)}
-            </code>
-          </pre>
-        ) : (
-          <p className="text-gray-400">No data available</p>
-        )}
-        
-        <ModalFooter>
-          <button
-            className="px-4 py-2 bg-gray-700 hover:bg-gray-600 text-white rounded-md transition-colors"
-            onClick={jsonModal.onClose}
-          >
-            Close
-          </button>
-          {selectedImageData && (
-            <button
-              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-colors"
-              onClick={() => {
-                navigator.clipboard.writeText(JSON.stringify(selectedImageData, null, 2));
-                alert("JSON data copied to clipboard!");
-              }}
-            >
-              Copy JSON
-            </button>
           )}
         </ModalFooter>
       </CustomModal>
@@ -432,7 +370,7 @@ export default function ImageGallery({
           src: image.browseUrl,
           alt: image.title,
           title: image.title,
-          description: `Target: ${image.target} | Instrument: ${image.instrument} | Created: ${new Date(image.creationTime).toLocaleDateString()}`
+          description: `Target: ${image.target} | Instrument: ${image.instrument} | Created: ${image.creationTime && !isNaN(new Date(image.creationTime).getTime()) ? new Date(image.creationTime).toLocaleDateString() : "N/A"}`
         }))}
         plugins={[Captions, Fullscreen, Slideshow, Thumbnails, Zoom]}
         captions={{ descriptionTextAlign: "center" }}
