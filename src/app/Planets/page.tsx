@@ -4,8 +4,8 @@ import TextStyled from "@/components/ui/textstyled";
 import SpotlightCard from "@/components/SpotlightCard";
 
 export const metadata = {
-  title: "Planets | NASA Explorer",
-  description: "Explore the planets of our Solar System",
+  title: "Planets | Space Vision",
+  description: "Explore os planetas do nosso sistema solar e descubra suas características únicas.",
 };
 
 export default function PlanetsPage() {

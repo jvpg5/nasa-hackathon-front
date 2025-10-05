@@ -10,8 +10,11 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "  Space Vision",
+  title: "Space Vision",
   description: "Space Vision",
+  icons: {
+    icon: "/assets/logo.svg",
+  },
 };
 
 export default function RootLayout({
