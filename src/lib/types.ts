@@ -115,6 +115,6 @@ export const toGalleryImage = (doc: ImageDocument): GalleryImage => {
     productId: doc.PRODUCT_ID,
     creationTime: doc.PRODUCT_CREATION_TIME,
     spacecraft: doc.SPACECRAFT_NAME,
-    mission: doc.ATLAS_MISSION_NAME,z
+    mission: doc.ATLAS_MISSION_NAME,
   };
 };
