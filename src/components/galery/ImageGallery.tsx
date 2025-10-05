@@ -44,10 +44,12 @@ export default function ImageGallery({
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(currentPage);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [failedImages, setFailedImages] = useState<Record<string, boolean>>({});
   
   // Modal states usando nosso hook personalizado
   const imageModal = useModal();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const [modalImageFailed, setModalImageFailed] = useState<boolean>(false);
   
   // Lightbox states
   const [lightboxOpen, setLightboxOpen] = useState<boolean>(false);
@@ -166,9 +168,31 @@ export default function ImageGallery({
     }
   };
 
+  // Handle retry loading for failed images
+  const handleRetryImage = (imageId: string, event: React.MouseEvent) => {
+    event.stopPropagation(); // Prevent opening the modal when clicking retry
+    setFailedImages(prev => ({
+      ...prev,
+      [imageId]: false
+    }));
+  };
+  
+  // Handle retry loading for modal image
+  const handleRetryModalImage = () => {
+    setModalImageFailed(false);
+    // Force re-render of the image by creating a new URL with a timestamp
+    if (selectedImage) {
+      const newSelectedImage = { ...selectedImage };
+      newSelectedImage.browseUrl = `${selectedImage.browseUrl}${selectedImage.browseUrl.includes('?') ? '&' : '?'}retry=${Date.now()}`;
+      setSelectedImage(newSelectedImage);
+    }
+  };
+  
   // Open image modal
   const openImageModal = (image: GalleryImage) => {
     setSelectedImage(image);
+    // Reset modal image failure state when a new image is selected
+    setModalImageFailed(false);
     const imageIndex = images.findIndex(img => img.id === image.id);
     setLightboxIndex(imageIndex !== -1 ? imageIndex : 0);
     setLightboxOpen(true);
@@ -231,11 +255,26 @@ export default function ImageGallery({
                   className="object-cover"
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   onError={(e) => {
+                    // Mark this image as failed
+                    setFailedImages(prev => ({
+                      ...prev,
+                      [image.id]: true
+                    }));
                     (e.target as HTMLImageElement).src = "/globe.svg";
                     (e.target as HTMLImageElement).className =
                       "object-contain p-8";
                   }}
                 />
+                {failedImages[image.id] && (
+                  <div className="absolute bottom-0 left-0 right-0 bg-black/70 p-2 flex justify-center">
+                    <button
+                      onClick={(e) => handleRetryImage(image.id, e)}
+                      className="text-xs bg-blue-600 hover:bg-blue-500 text-white px-2 py-1 rounded transition-colors"
+                    >
+                      Retry Image
+                    </button>
+                  </div>
+                )}
               </div>
               <div className="p-4">
                 <h3
@@ -309,18 +348,36 @@ export default function ImageGallery({
       >
         <div className="relative w-full h-[60vh]">
           {selectedImage && (
-            <Image
-              src={selectedImage.browseUrl}
-              alt={selectedImage.title}
-              fill
-              className="object-contain"
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              onError={(e) => {
-                // Fallback to a placeholder if image fails to load
-                (e.target as HTMLImageElement).src = '/globe.svg';
-                (e.target as HTMLImageElement).className = 'object-contain p-8';
-              }}
-            />
+            <>
+              <Image
+                src={selectedImage.browseUrl}
+                alt={selectedImage.title}
+                fill
+                className="object-contain"
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                onError={(e) => {
+                  // Mark modal image as failed
+                  setModalImageFailed(true);
+                  // Fallback to a placeholder if image fails to load
+                  (e.target as HTMLImageElement).src = '/globe.svg';
+                  (e.target as HTMLImageElement).className = 'object-contain p-8';
+                }}
+                onLoad={() => {
+                  // Reset failure state when image loads successfully
+                  setModalImageFailed(false);
+                }}
+              />
+              {modalImageFailed && (
+                <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+                  <button
+                    onClick={handleRetryModalImage}
+                    className="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2 rounded transition-colors"
+                  >
+                    Retry Loading Image
+                  </button>
+                </div>
+              )}
+            </>
           )}
         </div>
         {selectedImage && (

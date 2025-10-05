@@ -36,6 +36,7 @@ export async function GET(request: Request) {
     start,
     rows,
     sort,
+    // 'q' accepts apache solr query, by defaults has this one
     q: "+ATLAS_THUMBNAIL_URL:* -ATLAS_THUMBNAIL_URL:brwsnotavail.jpg +ATLAS_BROWSE_URL:* -ATLAS_BROWSE_URL:brwsnotavail.jpg"
   };
 

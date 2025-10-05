@@ -4,6 +4,7 @@ import Header from "@/components/header";
 import { Button } from "@/components/ui/button";
 import Particles from "@/components/Particles";
 import SpotlightCard from "@/components/SpotlightCard";
+import Link from "next/link";
 
 const scrollToGallery = () => {
   const gallerySection = document.getElementById("gallery-section");
@@ -18,6 +19,7 @@ export default function Home() {
       description: "Descubra imagens de planetas incíveis!",
       imgSrc: "/nasa5.png",
       alt: "Planetas",
+      href: "Planets"
     },
     {
       id: 2,
@@ -25,6 +27,7 @@ export default function Home() {
       description: "Descubra imagens por satelites !",
       imgSrc: "/nasa7.png",
       alt: "Satélites",
+      href: "Satelites"
     },
     {
       id: 3,
@@ -32,6 +35,7 @@ export default function Home() {
       description: "Descubra imagens por cada missão da NASA!",
       imgSrc: "/nasa8.jpg",
       alt: "Missões",
+      href: "Missions"
     },
   ];
 
@@ -117,9 +121,9 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-80">
               {galleryItems.map((item) => (
+                <Link href={item.href} key={item.id} >
                 <div
-                  key={item.id}
-                  className="bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105"
+                  className="hover:cursor-pointer bg-gray-800/30 backdrop-blur-sm rounded-lg p-4 border border-gray-700/50 hover:border-gray-500/70 transition-all duration-300 hover:scale-105"
                 >
                   <div className="aspect-square bg-gradient-to-br from-gray-700 to-gray-800 rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                     <img
@@ -133,6 +137,7 @@ export default function Home() {
                   </h4>
                   <p className="text-gray-400 text-xs">{item.description}</p>
                 </div>
+                </Link>
               ))}
             </div>
           </div>
