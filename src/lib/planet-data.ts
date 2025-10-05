@@ -9,67 +9,73 @@ export interface PlanetCardData {
 
 export const planetData: PlanetCardData[] = [
   {
-    id: 'mercury',
-    title: 'Mercury',
-    description: 'The smallest and innermost planet in the Solar System.',
-    imgSrc: '/planets/mercury.jpg',
-    alt: 'Image of Mercury',
-    href: '/galery?target=mercury'
+    id: "mercury",
+    title: "Mercúrio",
+    description: "O menor e mais interno planeta do Sistema Solar.",
+    imgSrc: "/mercury.jpg",
+    alt: "Image of Mercury",
+    href: "/galery?target=mercury",
   },
   {
-    id: 'venus',
-    title: 'Venus',
-    description: 'Second planet from the Sun with a thick, toxic atmosphere.',
-    imgSrc: '/planets/venus.jpg',
-    alt: 'Image of Venus',
-    href: '/galery?target=venus'
+    id: "venus",
+    title: "Vênus",
+    description: "O segundo planeta a partir do Sol com uma atmosfera espessa e tóxica.",
+    imgSrc: "/venus.jpg",
+    alt: "Image of Venus",
+    href: "/galery?target=venus",
   },
   {
-    id: 'earth',
-    title: 'Earth',
-    description: 'Our home planet, the only known celestial object to harbor life.',
-    imgSrc: '/planets/earth.jpg',
-    alt: 'Image of Earth',
-    href: '/galery?target=earth'
+    id: "earth",
+    title: "Terra",
+    description:
+      "Nosso planeta natal, o único objeto celestial conhecido por abrigar vida.",
+    imgSrc: "/earth.jpg",
+    alt: "Image of Earth",
+    href: "/galery?target=earth",
   },
   {
-    id: 'mars',
-    title: 'Mars',
-    description: 'The "Red Planet" with polar ice caps and evidence of ancient rivers.',
-    imgSrc: '/planets/mars.jpg',
-    alt: 'Image of Mars',
-    href: '/galery?target=mars'
+    id: "mars",
+    title: "Marte",
+    description:
+      'O "Planeta Vermelho" com calotas polares e evidências de rios antigos.',
+    imgSrc: "/mars.jpg",
+    alt: "Image of Mars",
+    href: "/galery?target=mars",
   },
   {
-    id: 'jupiter',
-    title: 'Jupiter',
-    description: 'The largest planet in our Solar System with a distinctive Great Red Spot.',
-    imgSrc: '/planets/jupiter.jpg',
-    alt: 'Image of Jupiter',
-    href: '/galery?target=jupiter'
+    id: "jupiter",
+    title: "Júpiter",
+    description:
+      "O maior planeta do nosso Sistema Solar com uma distinta Grande Mancha Vermelha.",
+    imgSrc: "/jupiter.jpg",
+    alt: "Image of Jupiter",
+    href: "/galery?target=jupiter",
   },
   {
-    id: 'saturn',
-    title: 'Saturn',
-    description: 'Famous for its extensive ring system composed of ice and rock particles.',
-    imgSrc: '/planets/saturn.jpg',
-    alt: 'Image of Saturn',
-    href: '/galery?target=saturn'
+    id: "saturn",
+    title: "Saturno",
+    description:
+      "Famoso por seu extenso sistema de anéis composto por partículas de gelo e rocha.",
+    imgSrc: "/saturn2.jpg",
+    alt: "Image of Saturn",
+    href: "/galery?target=saturn",
   },
   {
-    id: 'uranus',
-    title: 'Uranus',
-    description: 'Ice giant with a tilted rotation axis that makes it appear to roll on its side.',
-    imgSrc: '/planets/uranus.jpg',
-    alt: 'Image of Uranus',
-    href: '/galery?target=uranus'
+    id: "uranus",
+    title: "Urano",
+    description:
+      "Gigante de gelo com um eixo de rotação inclinado que o faz parecer rolar de lado.",
+    imgSrc: "/uranus.jpg",
+    alt: "Image of Uranus",
+    href: "/galery?target=uranus",
   },
   {
-    id: 'neptune',
-    title: 'Neptune',
-    description: 'The windiest planet in our Solar System with the strongest sustained winds.',
-    imgSrc: '/planets/neptune.jpg',
-    alt: 'Image of Neptune',
-    href: '/galery?target=neptune'
+    id: "neptune",
+    title: "Netuno",
+    description:
+      "O planeta mais ventoso do nosso Sistema Solar com os ventos sustentados mais fortes.",
+    imgSrc: "/neptune.jpg",
+    alt: "Image of Neptune",
+    href: "/galery?target=neptune",
   },
 ];
